@@ -11,7 +11,7 @@ object Delete {
     val sparkSession: SparkSession = SparkSession.builder().master("spark://172.31.250.9:7077").getOrCreate()
     sparkSession.conf.set("spark.sql.execution.arrow.enabled", "true")
 
-    /**   read of csv file*   */
+    /**   read of csv file **/
     val dataframe: org.apache.spark.sql.DataFrame = sparkSession.read.option("header", true)
         .csv("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS")//hdfs
 
@@ -23,9 +23,8 @@ object Delete {
     /** Show the result in our terminal **/
     result.show()
 
-    /** whrite the result in the new csv file **   */
+    /** whrite the result in the new csv file **/
     result.write.format("csv").mode("overwrite").save("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS/result.csv")
-
   }
 
 }
