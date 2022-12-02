@@ -22,7 +22,6 @@ object Delete {
 
     /** J'affiche le reustat dans la console*   */
     result.show()
-
     /** Réecriture du nouveau contenu du fichier **   */
     result.write.format("csv").mode("overwrite").save("data\\result.csv")
 
