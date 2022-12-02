@@ -11,19 +11,20 @@ object Delete {
     val sparkSession: SparkSession = SparkSession.builder().master("spark://172.31.250.9:7077").getOrCreate()
     sparkSession.conf.set("spark.sql.execution.arrow.enabled", "true")
 
-    /**   lit le fichier csv*   */
+    /**   read of csv file*   */
     val dataframe: org.apache.spark.sql.DataFrame = sparkSession.read.option("header", true)
-        //.csv("data\\steph.csv") //local
         .csv("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS")//hdfs
+
     val appelShema = sparkSession.createDataFrame(dataframe.rdd, SchemaDonnee.schema)
 
-    /**   Je supprime la ligne*   */
+    /** Delete of row with id=1 **/
     val result: DataFrame = dataframe.filter(col("IdentificationClient") =!= "1")
 
-    /** J'affiche le reustat dans la console*   */
+    /** Show the result in our terminal **/
     result.show()
-    /** Réecriture du nouveau contenu du fichier **   */
-    result.write.format("csv").mode("overwrite").save("data\\result.csv")
+
+    /** whrite the result in the new csv file **   */
+    result.write.format("csv").mode("overwrite").save("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS/result.csv")
 
   }
 
