@@ -1,4 +1,4 @@
-name := "ComplianceSteph"
+name := "ComplianceRGPD_NDONGMO_CHACHA"
 
 version := "0.1"
 
