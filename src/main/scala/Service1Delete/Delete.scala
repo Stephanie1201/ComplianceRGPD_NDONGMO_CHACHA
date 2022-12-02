@@ -19,7 +19,6 @@ object Delete {
 
     /** Delete of row with id=1 **/
     val result: DataFrame = dataframe.filter(col("IdentificationClient") =!= "1")
-
     /** Show the result in our terminal **/
     result.show()
 
