@@ -11,18 +11,17 @@ object Hacher {
 
   def hacher(): Unit = {
 
-    val sparkSession: SparkSession = SparkSession.builder().master("spark://172.31.250.9:7077").getOrCreate()
+    val sparkSession: SparkSession = SparkSession.builder().master("local").getOrCreate()
 
     /** lit le fichier csv* */
     val dataframe: org.apache.spark.sql.DataFrame = sparkSession.read.option("header", true)
-      //.csv("data\\steph.csv") //.csv("hdfs://172.31.249.118:9000/user/administrator/complianceRGPDMS")
-      .csv("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS")
+      .csv("data\\steph.csv") //.csv("hdfs://172.31.249.118:9000/user/administrator/complianceRGPDMS")
+     // .csv("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS")
     val appelShema = sparkSession.createDataFrame(dataframe.rdd, SchemaDonnee.schema)
 
     /** Affichage du contenu de notre fichier steph.csv dans la console**/
     val datasfile = dataframe.toDF("IdentificationClient",",Nom","Prenom","Adresse","DateDeSouscription")
         datasfile.show()
-
     /** Hachage des données de notre fichier et affichage du resultat dans la console**/
     val generateUUID = udf(() => UUID.randomUUID().toString)
     val dataHache = datasfile.withColumn("UUID", generateUUID())
