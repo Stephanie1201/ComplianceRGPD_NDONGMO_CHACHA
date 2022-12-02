@@ -8,7 +8,7 @@ object Delete {
   import org.apache.spark.sql.functions._
 
   def delete(): Unit = {
-    val sparkSession: SparkSession = SparkSession.builder().master("spark://master:7077").getOrCreate()
+    val sparkSession: SparkSession = SparkSession.builder().master("spark://172.31.250.9:7077").getOrCreate()
     sparkSession.conf.set("spark.sql.execution.arrow.enabled", "true")
 
     /**   lit le fichier csv*   */
