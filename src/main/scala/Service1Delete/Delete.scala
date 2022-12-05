@@ -1,19 +1,24 @@
 package complianceGRPD
 package Service1Delete
 
+import com.sun.xml.internal.bind.api.impl.NameConverter.Standard
+import org.apache.curator.shaded.com.google.common.hash.Hashing
 import org.apache.spark.sql.{DataFrame, SparkSession}
+
+import java.nio.charset.StandardCharsets
 
 object Delete {
 
   import org.apache.spark.sql.functions._
 
   def delete(): Unit = {
-    val sparkSession: SparkSession = SparkSession.builder().master("spark://172.31.250.9:7077").getOrCreate()
+
+    val sparkSession: SparkSession = SparkSession.builder().master("yarn").getOrCreate()
     sparkSession.conf.set("spark.sql.execution.arrow.enabled", "true")
 
     /**   read of csv file **/
     val dataframe: org.apache.spark.sql.DataFrame = sparkSession.read.option("header", true)
-        .csv("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS")//hdfs
+        .csv("hdfs://172.31.250.9:9000/user/namenode/complianceRGPDMS")//hdfs
 
     val appelShema = sparkSession.createDataFrame(dataframe.rdd, SchemaDonnee.schema)
 
@@ -24,7 +29,7 @@ object Delete {
     result.show()
 
     /** whrite the result in the new csv file **/
-    result.write.format("csv").mode("overwrite").save("hdfs://172.31.250.9:7077/user/namenode/complianceRGPDMS/result.csv")
+    result.write.mode("overwrite").csv("hdfs://172.31.250.9:9000/user/namenode/complianceRGPDMS")
   }
 
 }
