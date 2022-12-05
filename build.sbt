@@ -13,4 +13,5 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % "3.2.2"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.2.2"
 libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.17.0"
 libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.17.0"
+libraryDependencies += "io.jvm.uuid" %% "scala-uuid" % "0.3.1"
 

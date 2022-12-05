@@ -42,6 +42,7 @@
     <orderEntry type="library" name="sbt: io.dropwizard.metrics:metrics-jmx:4.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: io.dropwizard.metrics:metrics-json:4.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: io.dropwizard.metrics:metrics-jvm:4.2.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.jvm.uuid:scala-uuid_2.12:0.3.1:jar" level="project" />
     <orderEntry type="library" name="sbt: io.netty:netty-all:4.1.68.Final:jar" level="project" />
     <orderEntry type="library" name="sbt: io.netty:netty-buffer:4.1.50.Final:jar" level="project" />
     <orderEntry type="library" name="sbt: io.netty:netty-codec:4.1.50.Final:jar" level="project" />
