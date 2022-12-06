@@ -1,7 +1,7 @@
 # ComplianceRGPD_NDONGMO_CHACHA
 
 ## Visualisation
-###Fichier d'origine Avant le delete:
+### Fichier d'origine Avant le delete:
 ![](Images/OriginFile.png)
 
 Dans ce projet, nous avons faire deux micro-services:
@@ -12,7 +12,7 @@ Nous avons implémenté un scénario dans lequel un utilisateur nous donne son n
 Ensuite nous generons un fichier avec les données sauf la donnée supprimée
 Enfin avec l'object mainDelete, nous executons l'object Delete
 
-###Fichier après le delete:
+### Fichier après le delete:
 ![img.png](Images/ImageAfterDelete.png)
 
 Le deuxième est Service2Hacher: Un utilisateur souhaiterais que ces données reste confidentielles.
