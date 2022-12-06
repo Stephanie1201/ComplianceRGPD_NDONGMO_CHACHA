@@ -1,7 +1,7 @@
 # ComplianceRGPD_NDONGMO_CHACHA
 
 ## Visualisation
-### Fichier d'origine Avant le delete:
+###Fichier d'origine Avant le delete:
 ![](Images/OriginFile.png)
 
 Dans ce projet, nous avons faire deux micro-services:
@@ -31,5 +31,7 @@ Pour installer notre application, nous aurons besoin de:
 - package l'application en exécutant la commande suivante à la racine du projet
 
 ```
-sbt assembly
+sbt compile
+sbt package
 ```
+![img.png](Images/package.png)
