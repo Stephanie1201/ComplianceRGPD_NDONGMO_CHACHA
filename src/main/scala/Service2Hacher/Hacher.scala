@@ -18,11 +18,11 @@ object Hacher {
 
   def hacher(): Unit = {
 
-    val sparkSession: SparkSession = SparkSession.builder().master("yarn").getOrCreate()
+    val sparkSession: SparkSession = SparkSession.builder().master("hdfs://localhost:9000/user/complianceRGPDMS/").getOrCreate()
 
     /**   read of csv file **/
     val dataframe: org.apache.spark.sql.DataFrame = sparkSession.read.option("header", true)
-      .csv("hdfs://172.31.250.9:9000/user/namenode/complianceRGPDMS")
+      .csv("hdfs://localhost:9000/user/complianceRGPDMS")
 
     val resultatHachage = dataframe.withColumn("IdentificationClient", when(col("IdentificationClient") === 1, 1)
         .otherwise(col("IdentificationClient")))
